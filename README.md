@@ -1,62 +1,68 @@
-# Getting Started with Create React App
+# react-electron-template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## features
 
-## Available Scripts
+- you can use this as a basic template to make an [desktop app](./README.md) or [SPA](./README.md).
+- codes are based on typescript, react, electron
 
-In the project directory, you can run:
+## start/test
 
-### `yarn start`
+- linux/mac
+  1. yarn react-start
+  2. yarn electron-start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- windows
+  1. yarn react-start-win
+  2. yarn electron-start-win
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## build at build/
 
-### `yarn test`
+  - yarn build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## packaging at dist/
 
-### `yarn build`
+## other notes
+- packaged executables save and use config files at the following dir. this happens even when running windows portable, linux appimage. this is electron's natural behavior.
+  - (windows) C:\Users\$USER\AppData\Roaming\$APP_NAME
+  - (linux) ~/.config/$APP_NAME
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## how I created this template
+- cmd/bash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+yarn create react-app --template typescript $DIRNAME
+yarn add -D electron electron-builder
+yarn add @material-ui/core @material-ui/icons history @types/history react-router-dom react-router @types/react-router
+```
+- add/edit package.json
+```
+  "main": "public/electron.js",
+  "homepage": "./"
 
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "react-start": "BROWSER=none yarn start",
     "electron-start": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "react-start-win": "set BROWSER=none && yarn start",
     "electron-start-win": "set ELECTRON_START_URL=http://localhost:3000  && electron .",
-    "electron-build": "yarn build",
     "electron-pack": "yarn electron-builder build",
     "electron-pack-win-portable": "yarn electron-builder -w portable",
     "electron-pack-linux-appimage": "yarn electron-builder -l AppImage",
     "electron-pack-mac": "yarn electron-builder -m"
   }
+```
+
+- add/edit follwing files:
+  - public/electron.js
+  - src/service/history.tsx
+  - src/index.tsx
+  - tsconfig.json
+  - src/App.tsx
+  - src/index.tsx
+  - src/route/index.tsx
+  - src/component/sidebar/Sidebar.tsx
+  - src/pages/IndexPage.tsx  
+  - src/pages/MessagePage.tsx
+  - src/pages/ChannelPage.tsx
+  - src/pages/index.tsx
