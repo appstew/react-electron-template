@@ -20,6 +20,12 @@
   - yarn build
 
 ## packaging at dist/
+```
+yarn electron-pack
+yarn electron-pack-win-portable
+yarn electron-pack-linux-appimage
+yarn electron-pack-mac
+```
 
 ## other notes
 - packaged executables save and use config files at the following dir. this happens even when running windows portable, linux appimage. this is electron's natural behavior.
@@ -39,7 +45,8 @@ yarn add @material-ui/core @material-ui/icons history @types/history react-route
 - add/edit package.json
 ```
   "main": "public/electron.js",
-  "homepage": "./"
+  "homepage": "./",
+  ...,
 
   "scripts": {
     "react-start": "BROWSER=none yarn start",
@@ -53,16 +60,6 @@ yarn add @material-ui/core @material-ui/icons history @types/history react-route
   }
 ```
 
+
 - add/edit follwing files:
   - public/electron.js
-  - src/service/history.tsx
-  - src/index.tsx
-  - tsconfig.json
-  - src/App.tsx
-  - src/index.tsx
-  - src/route/index.tsx
-  - src/component/sidebar/Sidebar.tsx
-  - src/pages/IndexPage.tsx  
-  - src/pages/MessagePage.tsx
-  - src/pages/ChannelPage.tsx
-  - src/pages/index.tsx
